@@ -3,3 +3,5 @@ This repository is as same as the repository of skinlib.release, but gradle vers
 
 ## Introduce
 The detail of usage please check:
+
+https://github.com/devmeng/skinlib.release
