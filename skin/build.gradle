@@ -27,17 +27,14 @@ android {
 
 }
 
-subprojects {
-    apply plugin: 'maven-publish'
-    afterEvaluate {
-        publishing {
-            publications {
-                release(MavenPublication) {
-                    groupId = 'com.devmeng'
-                    artifactId = 'skinlow'
-                    version = '1.0.0'
-                    from components.release
-                }
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = 'com.devmeng'
+                artifactId = 'skinlow'
+                version = '1.0.0'
+                from components.release
             }
         }
     }
