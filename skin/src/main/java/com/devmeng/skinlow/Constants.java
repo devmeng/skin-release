@@ -6,4 +6,6 @@ public class Constants {
 
     public static String EMPTY = "";
 
+    public static String MD5 = "MD5";
+
 }
