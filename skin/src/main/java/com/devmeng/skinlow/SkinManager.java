@@ -43,7 +43,19 @@ public class SkinManager extends ObservableImpl {
         return instance;
     }
 
-    public static SkinManager init(Application application, boolean isAppTypeface, List<String> activities) {
+    public static SkinManager init(Application application) {
+        return init(application, false, null, true);
+    }
+
+    public static SkinManager init(Application application, boolean isAppTypeface) {
+        return init(application, isAppTypeface, null, true);
+    }
+
+    public static SkinManager init(Application application, boolean isAppTypeface, boolean isDebug) {
+        return init(application, isAppTypeface, null, isDebug);
+    }
+
+    public static SkinManager init(Application application, boolean isAppTypeface, List<String> activities, boolean isDebug) {
         SkinManager.application = application;
         if (instance == null) {
             synchronized (SkinManager.class) {
@@ -52,6 +64,7 @@ public class SkinManager extends ObservableImpl {
                     application.registerActivityLifecycleCallbacks(new SkinActivityLifecycle(activities));
                     SkinResources.init(application);
                     SkinPreference.init(application);
+                    Constants.IS_DEBUG = isDebug;
                     Constants.IS_APP_TYPEFACE = isAppTypeface;
                 }
             }
