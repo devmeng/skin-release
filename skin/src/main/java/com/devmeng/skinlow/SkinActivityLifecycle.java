@@ -13,7 +13,6 @@ import com.devmeng.skinlow.utils.Log;
 import com.devmeng.skinlow.utils.SkinPreference;
 import com.devmeng.skinlow.utils.SkinThemeUtils;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     @Override
-    public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+    public void onActivityPreCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
         Log.d("activity getShortClassName -> " + activity.getComponentName().getShortClassName());
         if (skinForSingle(activity)) {
             return;
@@ -41,18 +40,14 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
                 Log.e(e.getMessage());
             }
         }
-        try {
-            Field mFactorySet = LayoutInflater.class.getDeclaredField("mFactorySet");
-            mFactorySet.setAccessible(true);
-            mFactorySet.setBoolean(inflater, false);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         SkinFactory skinFactory = new SkinFactory(activity, skinTypeface);
         inflater.setFactory2(skinFactory);
         SkinManager.getInstance().addObserver(skinFactory);
         factoryMap.put(activity, skinFactory);
+    }
+
+    @Override
+    public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
     }
 
     @Override
@@ -98,6 +93,9 @@ public class SkinActivityLifecycle implements Application.ActivityLifecycleCallb
     }
 
     private boolean skinForSingle(Activity activity) {
+        if (activities == null) {
+            return false;
+        }
         if (activities.size() > 0 && !activities.contains(activity.getComponentName().getShortClassName().substring(1))) {
             Log.d("注销");
             return true;
