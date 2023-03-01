@@ -1,6 +1,8 @@
 # skin-release API 23 [![](https://jitpack.io/v/devmeng/skin-release.svg)](https://jitpack.io/#devmeng/skin-release)
 
 The repository which supports to change application's views skins by dynamic.
+This repository has same function with repository of skinlib.release, but gradle version is lower than that is 5.6.4-all.(skinlib.release's gradle version is 7.4-bin) 
+skinlib.release see github: https://github.com/devmeng/skinlib.release
 
 ## Introduce
 
