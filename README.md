@@ -4,7 +4,7 @@ The repository which supports to change application's views skins by dynamic.
 
 This repository has same function with repository of skinlib.release, but gradle version is lower than that is 5.6.4-all.(skinlib.release's gradle version is 7.4-bin) 
 
-skinlib.release see github: https://github.com/devmeng/skinlib.release
+**skinlib.release** see github: https://github.com/devmeng/skinlib.release
 
 ## Introduce
 
