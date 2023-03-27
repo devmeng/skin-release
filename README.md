@@ -26,7 +26,7 @@ And then configs the dependence under your project.
 
 ```groovy
 dependencies {
-    implementation 'com.github.devmeng:skinlib.release:latest.release'
+    implementation 'com.github.devmeng:skin-release:latest.release'
 }
 ```
 
